@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./styles/home.module.css";
+import Image from "next/image";
 
 export const URL = "https://billions-api.nomadcoders.workers.dev/";
 
@@ -7,7 +8,7 @@ async function getBillions() {
     return fetch(URL).then((response) => response.json());
 }
 
-export function transformNum(worth: string) {
+export function transformNum(worth: any) {
     return Math.round(parseInt(worth) / 1000);
 }
 
@@ -16,12 +17,12 @@ export default async function Home() {
     return (
         <div className={styles.container}>
             {billions.map((billion: any) => (
-                <Link href={`/person/${billion.id}`}>
-                    <div
-                        className={styles.card}
-                        key={billion.id}
-                    >
-                        <img
+                <Link
+                    key={billion.id}
+                    href={`/person/${billion.id}`}
+                >
+                    <div className={styles.card}>
+                        <Image
                             className={styles.cardImg}
                             alt={billion.name}
                             src={billion.squareImage}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "../../styles/person.module.css";
 import { transformNum, URL } from "@/app/page";
 
@@ -13,7 +14,7 @@ export default async function Person({ params }: { params: Promise<{ id: string 
     return (
         <div className={styles.container}>
             <div className={styles.article}>
-                <img
+                <Image
                     className={styles.mainImg}
                     src={info.squareImage}
                     alt={info.id}
@@ -29,7 +30,10 @@ export default async function Person({ params }: { params: Promise<{ id: string 
                 <div className={styles.assetCards}>
                     {info.financialAssets
                         ? info.financialAssets.map((asset: any) => (
-                              <div className={styles.card}>
+                              <div
+                                  key={asset.id}
+                                  className={styles.card}
+                              >
                                   <span>Ticker: {asset.ticker}</span>
                                   <span>Shares: {parseInt(asset.numberOfShares).toLocaleString()}</span>
                                   {asset.exerciseOptionPrice ? <span>Exercise Price: ${asset.exerciseOptionPrice}</span> : null}
