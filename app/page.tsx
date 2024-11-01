@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./styles/home.module.css";
-import Image from "next/image";
 
 export const URL = "https://billions-api.nomadcoders.workers.dev/";
 
@@ -18,11 +17,12 @@ export default async function Home() {
         <div className={styles.container}>
             {billions.map((billion: any) => (
                 <Link
+                    prefetch
                     key={billion.id}
                     href={`/person/${billion.id}`}
                 >
                     <div className={styles.card}>
-                        <Image
+                        <img
                             className={styles.cardImg}
                             alt={billion.name}
                             src={billion.squareImage}
