@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../../styles/person.module.css";
 import { transformNum, URL } from "@/app/page";
 
@@ -14,7 +13,7 @@ export default async function Person({ params }: { params: Promise<{ id: string 
     return (
         <div className={styles.container}>
             <div className={styles.article}>
-                <Image
+                <img
                     className={styles.mainImg}
                     src={info.squareImage}
                     alt={info.id}
